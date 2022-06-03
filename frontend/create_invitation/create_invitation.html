@@ -8,18 +8,39 @@
     <title>Creating Invitation</title>
   </head>
   <body>
-    <div class="meme-generator">
-      <label>Select Image:</label>
-      <input type="file" id="imageFileInput" />
+    <div class="information-collection">
+      <h1>Създай покана</h4>
+      <div classs="information">
+          <label>Tема на презентация:</label>
+          <input type="text" id="theme_text" />
 
-      <label>Top text</label>
-      <input type="text" id="topText" />
+          <label>Дата на презентация:</label>
+          <input type="date" id="date_presentation" />
 
-      <label>Bottom text</label>
-      <input type="text" id="bottomText" />
+          <label>Час на презентация:</label>
+          <input type="time" id="hour_presentation" />
 
-      <canvas id="meme"></canvas>
+          <label>Факултетен номер:</label>
+          <input type="number" id="theme_text" />
+
+          <label>Избери презентация:</label>
+          <input type="file" class="fileInput" />
+      </div>
+      <div class="meme-generator">
+        <label>Избери изображение:</label>
+        <input type="file" class="fileInput" />
+
+        <label>Горен текст:</label>
+        <input type="text" id="topText" />
+
+        <label>Долен текст:</label>
+        <input type="text" id="bottomText" />
+
+        <canvas id="meme"></canvas>
+      </div>
+
     </div>
     <script src="/frontend/create_invitation/create_invitation.js"></script>
+
   </body>
 </html>
