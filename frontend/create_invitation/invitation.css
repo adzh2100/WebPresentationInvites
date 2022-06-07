@@ -27,13 +27,18 @@ input {
     border-radius: 0;
 }
 
-.meme {
-    width: 60%;
-    max-width: 500px;
-}
 
 .information-collection{
     background-color: whitesmoke;
     padding: 25px;
     flex: auto;
+}
+
+.meme {
+    width: 60%;
+    max-width: 500px;
+}
+
+#description {
+    height: 120px;
 }
