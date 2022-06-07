@@ -1,0 +1,3 @@
+DROP DATABASE if EXISTS webInvites;
+
+CREATE DATABASE webInvites;
