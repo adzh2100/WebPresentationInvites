@@ -1,49 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/frontend/create_invitation/invitation.css" />
-    <title>Creating Invitation</title>
-  </head>
-  <body>
-    <div class="information-collection">
-      <h1>Създай покана</h4>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="invitation.css" />
+  <title>Creating Invitation</title>
+</head>
+
+<body>
+  <form class="information-collection">
+    <h1>Създай покана</h4>
       <div classs="information">
-          <label>Tема на презентация:</label>
-          <input type="text" id="theme_text" />
+        <label>Tема на презентация:</label>
+        <input type="text" id="theme_text" />
 
-          <label>Дата на презентация:</label>
-          <input type="date" id="date_presentation" />
+        <label>Дата на презентация:</label>
+        <input type="date" id="date_presentation" />
 
-          <label>Час на презентация:</label>
-          <input type="time" id="hour_presentation" />
+        <label>Час на презентация:</label>
+        <input type="time" id="hour_presentation" />
 
-          <label>Факултетен номер:</label>
-          <input type="number" id="theme_text" />
+        <label>Факултетен номер:</label>
+        <input type="number" id="theme_text" />
 
-          <label>Допълнително описание:</label>
-          <input type="text" id="description" />
+        <label>Допълнително описание:</label>
+        <input type="text" id="description" />
 
-          <label>Избери презентация:</label>
-          <input type="file" class="fileInput" />
+        <label>Избери презентация:</label>
+        <input type="file" class="fileInput" />
       </div>
-      
+
       <div class="meme-generator">
         <label>Избери изображение:</label>
         <input type="file" class="fileInput" />
-  
+
         <label>Горен текст:</label>
         <input type="text" id="topText" />
-  
+
         <label>Долен текст:</label>
         <input type="text" id="bottomText" />
-  
+
         <canvas id="meme"></canvas>
       </div>
-    </div>
-    <script src="/frontend/create_invitation/create_invitation.js"></script>
+      <button type="submit">Добави покана</button>
+  </form>
+  <script src="/frontend/create_invitation/create_invitation.js"></script>
 
-  </body>
+</body>
+
 </html>
