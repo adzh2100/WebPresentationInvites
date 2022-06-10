@@ -26,6 +26,7 @@ document.getElementById('registerForm').addEventListener('submit', event => {
 
   register(formData)
     .then(response => {
+      console.log(response);
       if (response.success) {
         location.replace('../create_invitation/create_invitation.html');
       } else {
@@ -43,7 +44,6 @@ const register = async data => {
     },
     body: JSON.stringify(data),
   });
-
   const result = await response.json();
   return result;
 };
