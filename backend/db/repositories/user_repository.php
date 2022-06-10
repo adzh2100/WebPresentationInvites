@@ -81,11 +81,11 @@ class UserRepository
     $this->database->getConnection()->beginTransaction();
 
     try {
-      $sql = "SELECT username, first_name, last_name, email, role FROM users WHERE faculty_number=:faculty_number";
-      $currentUserData = $this->database->getConnection()->prepare($sql);
-      $currentUserData->execute(["faculty_number" => $faculty_number]);
+      $sql = "SELECT * FROM users WHERE faculty_number=:faculty_number";
+      $userData = $this->database->getConnection()->prepare($sql);
+      $userData->execute(["faculty_number" => $faculty_number]);
       $this->database->getConnection()->commit();
-      return ["success" => true, "data" => $currentUserData];
+      return ["success" => true, "data" => $userData];
     } catch (PDOException $e) {
       $this->database->getConnection()->rollBack();
       return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
@@ -97,11 +97,11 @@ class UserRepository
     $this->database->getConnection()->beginTransaction();
 
     try {
-      $sql = "SELECT username, first_name, last_name, faculty_number, role FROM users WHERE email=:email";
-      $currentUserData = $this->database->getConnection()->prepare($sql);
-      $currentUserData->execute(["email" => $email]);
+      $sql = "SELECT * FROM users WHERE email=:email";
+      $userData = $this->database->getConnection()->prepare($sql);
+      $userData->execute(["email" => $email]);
       $this->database->getConnection()->commit();
-      return ["success" => true, "data" => $currentUserData];
+      return ["success" => true, "data" => $userData];
     } catch (PDOException $e) {
       $this->database->getConnection()->rollBack();
       return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
