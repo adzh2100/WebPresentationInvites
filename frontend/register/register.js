@@ -1,3 +1,7 @@
+if (localStorage.getItem('user')) {
+  location.replace('../create_invitation/create_invitation.html');
+}
+
 document.getElementById('registerForm').addEventListener('submit', event => {
   event.preventDefault();
 
