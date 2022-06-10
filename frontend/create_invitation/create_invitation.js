@@ -1,7 +1,7 @@
-const imageFileInput = document.querySelector("#imageFileInput");
-const topText = document.querySelector("#topText");
-const bottomText = document.querySelector("#bottomText");
-const canvas = document.querySelector("#meme");
+const imageFileInput = document.getElementById("imageFileInput");
+const topText = document.getElementById("topText");
+const bottomText = document.getElementById("bottomText");
+const canvas = document.getElementById("meme");
 
 let image;
 
