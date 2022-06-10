@@ -79,17 +79,17 @@ class UserService
     return $this->userRepository->getUserById($id);
   }
 
-  public function isUsernameUnique($username)
+  private function isUsernameUnique($username)
   {
     return empty($this->userRepository->getUserByUsername($username)["data"]->fetch(PDO::FETCH_ASSOC));
   }
 
-  public function isEmailUnique($email)
+  private function isEmailUnique($email)
   {
     return empty($this->userRepository->getUserByEmail($email)["data"]->fetch(PDO::FETCH_ASSOC));
   }
 
-  public function isFnUnique($fn)
+  private function isFnUnique($fn)
   {
     return empty($this->userRepository->getUserByFacultyNumber($fn)["data"]->fetch(PDO::FETCH_ASSOC));
   }

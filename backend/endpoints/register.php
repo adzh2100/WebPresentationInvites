@@ -24,25 +24,6 @@ if ($password != $repeated_password) {
 }
 
 try {
-  $db = new Database();
-  $connection = $db->getConnection();
-
-  // make a func for this in the user service
-  $sql = "SELECT * FROM users WHERE email = :email";
-
-  $statement = $connection->prepare($sql);
-  $statement->execute(["email" => $email]);
-
-  if ($statement->rowCount() != 0) {
-    exit(json_encode(["success" => false, "error" => "Потребител с този имейл адрес вече съществува!"]));
-  }
-} catch (PDOException $e) {
-  return json_encode(["success" => false, "error" => "Connection failed: " . $e->getMessage()]);
-}
-
-try {
-  // use the function from the user service????
-
   $response = $userService->createUser([
     "username" => $username,
     "password" => $md5_password,
