@@ -68,3 +68,13 @@ select{
     padding: 25px;
     flex: auto;
 }
+
+.error{
+    margin: 30px;
+    padding: 10px 10px 10px 10px;
+    background-color: rgba(254, 4, 4, 0.493);
+    border-radius: 50px;
+    color:white;
+    display: flex;
+    justify-content: center;
+}
