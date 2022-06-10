@@ -1,40 +1,32 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="utf-8" />
-    <title></title>
-    <link rel="stylesheet" href="./login.css" />
-  </head>
-  <body>
-    <form id="login">
-      <h3>Вход</h3>
-      <div>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          placeholder="Потребителско име"
-          required
-        />
-      </div>
-      <div>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          placeholder="Парола"
-          required
-        />
-      </div>
-      <button type="submit" class="button">
-        <span class="text">Вход</span>
-        <i class="ri-check-line icon"></i>
-      </button>
-      <p>
-        Нямаш профил в системата?
-        <a href="../register/register.html">Регистрирай се тук</a>
-      </p>
-    </form>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="./login.css" />
+</head>
+
+<body>
+  <form id="login">
+    <h3>Вход</h3>
+    <div>
+      <input id="username" name="username" type="text" placeholder="Потребителско име" required />
+    </div>
+    <div>
+      <input id="password" name="password" type="password" placeholder="Парола" required />
+    </div>
+    <button type="submit" class="button">
+      <span class="text">Вход</span>
+      <i class="ri-check-line icon"></i>
+    </button>
+    <p>
+      Нямаш профил в системата?
+      <a href="../register/register.html">Регистрирай се тук</a>
+    </p>
+  </form>
+  <script src="login.js"></script>
+</body>
+
 </html>

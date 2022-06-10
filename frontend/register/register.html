@@ -9,10 +9,13 @@
 </head>
 
 <body>
-  <form id="registerForm" onsubmit="register(event)">
+  <form id="registerForm">
     <h3>Регистрация</h3>
     <div>
-      <input id="fullName" name="FullName" type="text" placeholder="Име и фамилия" required />
+      <input id="firstName" name="firstName" type="text" placeholder="Име" required />
+    </div>
+    <div>
+      <input id="lastName" name="lastName" type="text" placeholder="Фамилия" required />
     </div>
     <div>
       <input id="username" name="username" type="text" placeholder="Потребителско име" required />
@@ -40,6 +43,7 @@
     </button>
     <p>Вече имаш профил? <a href="../login/login.html">Влез от тук</a></p>
   </form>
+  <script src="register.js"></script>
 </body>
 
 </html>
