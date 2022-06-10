@@ -5,7 +5,6 @@ body{
     font-family: sans-serif;
 }
 
-
 label {
     display: block;
     font-weight: bold;
@@ -27,16 +26,16 @@ input {
     border-radius: 0;
 }
 
-
 .information-collection{
     background-color: whitesmoke;
     padding: 25px;
     flex: auto;
 }
 
-.meme {
-    width: 60%;
-    max-width: 500px;
+canvas {
+    margin: 0px auto;
+    display: block;
+    max-width: 100%;
 }
 
 #description {
