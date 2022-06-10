@@ -1,8 +1,10 @@
-function register(event) {
+document.getElementById('registerForm').addEventListener('submit', event => {
   event.preventDefault();
 
-  const fullName = docuement.getElementById('fullName').value;
+  const firstName = document.getElementById('firstName').value;
+  const lastName = document.getElementById('lastName').value;
   const username = document.getElementById('username').value;
+  const email = document.getElementById('email').value;
   const facultyNumber = document.getElementById('fn').value;
   const password = document.getElementById('spassword').value;
   const rePassword = document.getElementById('repassword').value;
@@ -12,23 +14,36 @@ function register(event) {
   // Check pass
 
   const formData = {
-    fullName,
+    firstName,
+    lastName,
     username,
+    email,
     facultyNumber,
     password,
+    rePassword,
     role,
   };
 
-  fetch('../../backend/endpoints/login.php', {
-    method: 'POST',
-    body: JSON.stringify(formData),
-  })
-    .then(response => response.json())
+  register(formData)
     .then(response => {
       if (response.success) {
-        location.replace('../home/home.html');
+        location.replace('../create_invitation/create_invitation.html');
       } else {
         document.getElementById('user-message').innerText = response.message;
       }
-    });
-}
+    })
+    .catch(err => console.log(err));
+});
+
+const register = async data => {
+  const response = await fetch('../../backend/endpoints/register.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  const result = await response.json();
+  return result;
+};
