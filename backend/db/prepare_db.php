@@ -17,6 +17,7 @@ function prepareDatabase($type, $host, $user, $password)
     );
 
     $connection->exec(file_get_contents('../../database/create_tables.sql'));
+    $connection->exec(file_get_contents('../../database/db_seed.sql'));
   } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
   }
