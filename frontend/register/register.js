@@ -30,7 +30,8 @@ document.getElementById('registerForm').addEventListener('submit', event => {
       if (response.success) {
         location.replace('../create_invitation/create_invitation.html');
       } else {
-        document.getElementById('user-message').innerText = response.message;
+        document.getElementById('error').classList.add('error');
+        document.getElementById('error').innerText = response['error'];
       }
     })
     .catch(err => console.log(err));

@@ -61,7 +61,7 @@ try {
     $_SESSION["user"] = $user;
     exit(json_encode(["success" => true, "message" => "Успешна регистрация!", "response" => $response]));
   } else {
-    exit(json_encode(["success" => false, "error" => "Connection failed: " . $e->getMessage()]));
+    exit(json_encode(["success" => false, "error" => $response["error"]]));
   }
 } catch (PDOException $e) {
   exit(json_encode(["success" => false, "error" => "Connection failed: " . $e->getMessage()]));

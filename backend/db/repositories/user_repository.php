@@ -75,4 +75,36 @@ class UserRepository
       return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
     }
   }
+
+  public function getUserByFacultyNumber($faculty_number)
+  {
+    $this->database->getConnection()->beginTransaction();
+
+    try {
+      $sql = "SELECT username, first_name, last_name, email, role FROM users WHERE faculty_number=:faculty_number";
+      $currentUserData = $this->database->getConnection()->prepare($sql);
+      $currentUserData->execute(["faculty_number" => $faculty_number]);
+      $this->database->getConnection()->commit();
+      return ["success" => true, "data" => $currentUserData];
+    } catch (PDOException $e) {
+      $this->database->getConnection()->rollBack();
+      return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
+    }
+  }
+
+  public function getUserByEmail($email)
+  {
+    $this->database->getConnection()->beginTransaction();
+
+    try {
+      $sql = "SELECT username, first_name, last_name, faculty_number, role FROM users WHERE email=:email";
+      $currentUserData = $this->database->getConnection()->prepare($sql);
+      $currentUserData->execute(["email" => $email]);
+      $this->database->getConnection()->commit();
+      return ["success" => true, "data" => $currentUserData];
+    } catch (PDOException $e) {
+      $this->database->getConnection()->rollBack();
+      return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
+    }
+  }
 }
