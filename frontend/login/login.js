@@ -1,3 +1,7 @@
+if (localStorage.getItem('user')) {
+  location.replace('../create_invitation/create_invitation.html');
+}
+
 document.getElementById('login').addEventListener('submit', event => {
   event.preventDefault();
 
@@ -11,6 +15,8 @@ document.getElementById('login').addEventListener('submit', event => {
 
   login(loginData).then(response => {
     if (response.success) {
+      // maybe return session id and save session id
+      localStorage.setItem('user', username);
       location.replace('../create_invitation/create_invitation.html');
     } else {
       // We should create such element and handle it properly
