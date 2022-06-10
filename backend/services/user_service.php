@@ -15,16 +15,14 @@ class UserService
   {
     // Validate
 
-    $query = $this->userRepository->createUser([
-      "username" => $user->username,
-      "password" => $user->password,
-      "firstName" => $user->fullName,
-      "lastName" => $user->fullName,
-      "email" => $user->email,
-      "role" => $user->role,
-      "facultyNumber" => $user->facultyNumber,
+    return $this->userRepository->createUser([
+      "username" => $user["username"],
+      "password" => $user["password"],
+      "firstName" => $user["firstName"],
+      "lastName" => $user["lastName"],
+      "email" => $user["email"],
+      "role" => $user["role"],
+      "facultyNumber" => $user["facultyNumber"],
     ]);
-
-    // do sth with the result
   }
 }
