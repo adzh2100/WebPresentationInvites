@@ -19,8 +19,8 @@ class UserRepository
     $this->database->getConnection()->beginTransaction();
 
     try {
-      $sql = "INSERT INTO users(username, password, first_name, last_name, email, role, faculty_number)
-      VALUES(:username, :password, :first_name, :last_name, :email, :role, :faculty_number)";
+      $sql = "INSERT INTO users(username, password, first_name, last_name, email, specification, year, faculty_number)
+      VALUES(:username, :password, :first_name, :last_name, :email, :specification, :year, :faculty_number)";
       $this->createUser = $this->database->getConnection()->prepare($sql);
       $this->createUser->execute(
         [
@@ -29,8 +29,9 @@ class UserRepository
           "first_name" => $data["firstName"],
           "last_name" => $data["lastName"],
           "email" => $data["email"],
-          "role" => $data["role"],
-          "faculty_number" => $data["facultyNumber"]
+          "faculty_number" => $data["facultyNumber"],
+          "specification" => $data["specification"],
+          "year" => $data["year"]
         ]
       );
 
@@ -65,7 +66,7 @@ class UserRepository
     $this->database->getConnection()->beginTransaction();
 
     try {
-      $sql = "SELECT username, first_name, last_name, faculty_number, email, role FROM users WHERE id=:id";
+      $sql = "SELECT username, first_name, last_name, faculty_number, email, specification, year FROM users WHERE id=:id";
       $currentUserData = $this->database->getConnection()->prepare($sql);
       $currentUserData->execute(["id" => $id]);
       $this->database->getConnection()->commit();

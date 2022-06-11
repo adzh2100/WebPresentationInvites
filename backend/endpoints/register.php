@@ -16,7 +16,8 @@ $lastName = $user_data["lastName"];
 $facultyNumber = $user_data["facultyNumber"];
 $password = $user_data["password"];
 $repeated_password = $user_data["rePassword"];
-$role = $user_data["role"];
+$specification = $user_data["specification"];
+$year = $user_data["year"];
 $md5_password = md5($password);
 
 if ($password != $repeated_password) {
@@ -30,7 +31,8 @@ try {
     "firstName" => $firstName,
     "lastName" => $lastName,
     "email" => $email,
-    "role" => $role,
+    "specification" => $specification,
+    "year" => $year,
     "facultyNumber" => $facultyNumber,
   ]);
 
@@ -38,7 +40,7 @@ try {
     $user_id = $response["data"];
 
     session_start();
-    $user = array("id" => $user_id, "username" => $username, "first_name" => $firstName, "last_name" => $lastName,  "faculty_number" => $facultyNumber, "email" => $email, "password" => $md5_password, "role" => $role);
+    $user = array("id" => $user_id, "username" => $username, "first_name" => $firstName, "last_name" => $lastName,  "faculty_number" => $facultyNumber, "email" => $email, "password" => $md5_password, "specification" => $specification, "year" => $year);
     $_SESSION["user"] = $user;
 
     unset($user["password"]);
