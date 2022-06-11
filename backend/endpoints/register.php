@@ -40,7 +40,9 @@ try {
     session_start();
     $user = array("id" => $user_id, "username" => $username, "first_name" => $firstName, "last_name" => $lastName,  "faculty_number" => $facultyNumber, "email" => $email, "password" => $md5_password, "role" => $role);
     $_SESSION["user"] = $user;
-    exit(json_encode(["success" => true, "message" => "Успешна регистрация!", "response" => $response]));
+
+    unset($user["password"]);
+    exit(json_encode(["success" => true, "message" => "Успешна регистрация!", "data" => json_encode($user)]));
   } else {
     exit(json_encode(["success" => false, "error" => $response["error"]]));
   }

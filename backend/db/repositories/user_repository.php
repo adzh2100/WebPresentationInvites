@@ -107,4 +107,20 @@ class UserRepository
       return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
     }
   }
+
+  public function getUserEmails($data)
+  {
+    $this->database->getConnection()->beginTransaction();
+
+    try {
+      $sql = "SELECT email FROM users WHERE id <> :user_id";
+      $userData = $this->database->getConnection()->prepare($sql);
+      $userData->execute(["user_id" => $data]);
+      $this->database->getConnection()->commit();
+      return ["success" => true, "data" => $userData];
+    } catch (PDOException $e) {
+      $this->database->getConnection()->rollBack();
+      return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
+    }
+  }
 }

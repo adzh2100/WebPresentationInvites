@@ -1,0 +1,45 @@
+body {
+  background-color: rgb(243, 233, 221);
+  margin: 20px auto;
+  font-family: sans-serif;
+  margin-top: 0;
+  width: 100%;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+  background: darkseagreen;
+  margin-bottom: 80px;
+  box-shadow: 0px 2px lightslategrey;
+}
+
+header a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+header img {
+  width: 30px;
+  cursor: pointer;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.invitation-element {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 50px;
+  background: whitesmoke;
+}
