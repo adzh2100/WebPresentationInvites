@@ -8,7 +8,7 @@ getInvitations().then(response => {
     <span>${invitation.date}</span>
     <span>${invitation.time}</span>
     <span>${invitation.presentation_theme}</span>
-    <span>${invitation.academical_number}</span>
+    <span>${invitation.faculty_number}</span>
     <span>${invitation.first_name} ${invitation.last_name}</span>
     `;
     invitationElement.classList.add('invitation-element');
