@@ -23,7 +23,8 @@ try {
   $_SESSION["last_name"] = $info["last_name"];
   $_SESSION["email"] = $info["email"];
   $_SESSION["faculty_number"] = $info["faculty_number"];
-  $_SESSION["role"] = $info["role"];
+  $_SESSION["specification"] = $info["specification"];
+  $_SESSION["year"] = $info["year"];
 
   exit(json_encode(["success" => true, "message" => "Успешен вход!", "data" => json_encode($info)]));
 } catch (PDOException $e) {

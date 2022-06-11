@@ -51,7 +51,8 @@ class UserService
       "firstName" => $user["firstName"],
       "lastName" => $user["lastName"],
       "email" => $user["email"],
-      "role" => $user["role"],
+      "specification" => $user["specification"],
+      "year" => $user["year"],
       "facultyNumber" => $user["facultyNumber"],
     ]);
   }
