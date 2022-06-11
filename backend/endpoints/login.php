@@ -22,9 +22,10 @@ try {
   $_SESSION["first_name"] = $info["first_name"];
   $_SESSION["last_name"] = $info["last_name"];
   $_SESSION["email"] = $info["email"];
-  $_SESSION["faculty_number"] = $info["faculty_number"];
+  $_SESSION["academical_number"] = $info["academical_number"];
   $_SESSION["specification"] = $info["specification"];
   $_SESSION["year"] = $info["year"];
+  $_SESSION["role"] = $info["role"];
 
   exit(json_encode(["success" => true, "message" => "Успешен вход!", "data" => json_encode($info)]));
 } catch (PDOException $e) {

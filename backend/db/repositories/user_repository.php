@@ -19,8 +19,8 @@ class UserRepository
     $this->database->getConnection()->beginTransaction();
 
     try {
-      $sql = "INSERT INTO users(username, password, first_name, last_name, email, specification, year, faculty_number)
-      VALUES(:username, :password, :first_name, :last_name, :email, :specification, :year, :faculty_number)";
+      $sql = "INSERT INTO users(username, password, first_name, last_name, email, specification, year, academical_number, role)
+      VALUES(:username, :password, :first_name, :last_name, :email, :specification, :year, :academical_number, :role)";
       $this->createUser = $this->database->getConnection()->prepare($sql);
       $this->createUser->execute(
         [
@@ -29,9 +29,10 @@ class UserRepository
           "first_name" => $data["firstName"],
           "last_name" => $data["lastName"],
           "email" => $data["email"],
-          "faculty_number" => $data["facultyNumber"],
+          "academical_number" => $data["academicalNumber"],
           "specification" => $data["specification"],
-          "year" => $data["year"]
+          "year" => $data["year"],
+          "role" => $data["role"]
         ]
       );
 
@@ -66,7 +67,7 @@ class UserRepository
     $this->database->getConnection()->beginTransaction();
 
     try {
-      $sql = "SELECT username, first_name, last_name, faculty_number, email, specification, year FROM users WHERE id=:id";
+      $sql = "SELECT username, first_name, last_name, academical_number, email, specification, year, role FROM users WHERE id=:id";
       $currentUserData = $this->database->getConnection()->prepare($sql);
       $currentUserData->execute(["id" => $id]);
       $this->database->getConnection()->commit();
@@ -77,14 +78,14 @@ class UserRepository
     }
   }
 
-  public function getUserByFacultyNumber($faculty_number)
+  public function getUserByAcademicalNumber($academical_number)
   {
     $this->database->getConnection()->beginTransaction();
 
     try {
-      $sql = "SELECT * FROM users WHERE faculty_number=:faculty_number";
+      $sql = "SELECT * FROM users WHERE academical_number=:academical_number";
       $userData = $this->database->getConnection()->prepare($sql);
-      $userData->execute(["faculty_number" => $faculty_number]);
+      $userData->execute(["academical_number" => $academical_number]);
       $this->database->getConnection()->commit();
       return ["success" => true, "data" => $userData];
     } catch (PDOException $e) {

@@ -15,7 +15,7 @@ class InvitationsRepository
     $this->database->getConnection()->beginTransaction();
 
     try {
-      $sql = "SELECT presentation_theme, date, time, description, first_name, last_name, faculty_number FROM invitations JOIN users on invitations.user_id = users.id";
+      $sql = "SELECT presentation_theme, date, time, description, first_name, last_name, academical_number FROM invitations JOIN users on invitations.user_id = users.id";
       $getInvitations = $this->database->getConnection()->prepare($sql);
       $getInvitations->execute();
       $this->database->getConnection()->commit();
