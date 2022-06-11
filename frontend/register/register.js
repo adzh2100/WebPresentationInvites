@@ -12,7 +12,9 @@ document.getElementById('registerForm').addEventListener('submit', event => {
   const facultyNumber = document.getElementById('fn').value;
   const password = document.getElementById('spassword').value;
   const rePassword = document.getElementById('repassword').value;
-  const role = document.getElementById('role').value;
+  const specification = document.getElementById('specification').value;
+  const year = document.getElementById('year').value;
+
 
   // Validate
   // Check pass
@@ -25,14 +27,15 @@ document.getElementById('registerForm').addEventListener('submit', event => {
     facultyNumber,
     password,
     rePassword,
-    role,
+    specification,
+    year,
   };
 
   register(formData)
     .then(response => {
       console.log(response);
       if (response.success) {
-        location.replace('../create_invitation/create_invitation.html');
+        // location.replace('../create_invitation/create_invitation.html');
       } else {
         document.getElementById('error').classList.add('error');
         document.getElementById('error').innerText = response['error'];
