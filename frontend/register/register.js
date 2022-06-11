@@ -1,3 +1,7 @@
+if (localStorage.getItem('user')) {
+  location.replace('../create_invitation/create_invitation.html');
+}
+
 document.getElementById('registerForm').addEventListener('submit', event => {
   event.preventDefault();
 
@@ -26,8 +30,8 @@ document.getElementById('registerForm').addEventListener('submit', event => {
 
   register(formData)
     .then(response => {
-      console.log(response);
       if (response.success) {
+        localStorage.setItem('user', response.data);
         location.replace('../create_invitation/create_invitation.html');
       } else {
         document.getElementById('error').classList.add('error');

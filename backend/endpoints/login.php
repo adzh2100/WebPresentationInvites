@@ -25,7 +25,7 @@ try {
   $_SESSION["faculty_number"] = $info["faculty_number"];
   $_SESSION["role"] = $info["role"];
 
-  exit(json_encode(["success" => true, "message" => "Успешен вход!"]));
+  exit(json_encode(["success" => true, "message" => "Успешен вход!", "data" => json_encode($info)]));
 } catch (PDOException $e) {
   exit(json_encode(["success" => false, "error" => "Connection failed: " . $e->getMessage()]));
 }

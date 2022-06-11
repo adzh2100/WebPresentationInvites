@@ -16,10 +16,11 @@ CREATE TABLE users (
   created_at        DATETIME DEFAULT NOW()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- CREATE TABLE invitations (
---   id                    INT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'primary key',
---   user_id               INT NOT NULL REFERENCES users(id),
---   presentation_theme    VARCHAR(255) NOT NULL,
---   datetime              DATETIME NOT NULL,
---   description           VARCHAR(255) NOT NULL
--- ) default charset utf8 comment '';
+CREATE TABLE invitations (
+  id                    INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  user_id               INT NOT NULL REFERENCES users(id),
+  presentation_theme    VARCHAR(255) NOT NULL,
+  date                  DATE NOT NULL,
+  time                  VARCHAR(10) NOT NULL,
+  description           VARCHAR(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
