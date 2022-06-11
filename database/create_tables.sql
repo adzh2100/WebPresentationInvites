@@ -11,9 +11,10 @@ CREATE TABLE users (
   password          VARCHAR(255) NOT NULL,
   first_name        VARCHAR(20) NOT NULL,
   last_name         VARCHAR(20) NOT NULL,
-  faculty_number    INT(10) NOT NULL UNIQUE,
-  specification     VARCHAR(50) NOT NULL,
-  year              INT(2) NOT NULL,
+  academical_number INT(10) NOT NULL UNIQUE,
+  specification     VARCHAR(50),
+  year              INT(2),
+  role              ENUM('student', 'teacher'),
   created_at        DATETIME DEFAULT NOW()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

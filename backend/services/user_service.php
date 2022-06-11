@@ -19,7 +19,7 @@ class UserService
     if ($this->isUsernameUnique($user["username"]) == false) {
       return ["success" => false, "error" => "Съществува потребител със същото потребителско име!"];
     }
-    if ($this->isFnUnique($user["facultyNumber"]) == false) {
+    if ($this->isAcademicalNumberUnique($user["academicalNumber"]) == false) {
       return ["success" => false, "error" => "Съществува потребител със същия факултетен номер!"];
     }
     if ($this->isEmailUnique($user["email"]) == false) {
@@ -41,7 +41,7 @@ class UserService
     if (strlen($user["lastName"]) > 20) {
       return ["success" => false, "error" => "Името трябва да бъде по- малко от 20 символа и да съдържа само букви!"];
     }
-    if (strlen(strval($user["facultyNumber"])) > 10) {
+    if (strlen(strval($user["academicalNumber"])) > 10) {
       return ["success" => false, "error" => "Невалиден факултетен номер!"];
     }
 
@@ -53,7 +53,8 @@ class UserService
       "email" => $user["email"],
       "specification" => $user["specification"],
       "year" => $user["year"],
-      "facultyNumber" => $user["facultyNumber"],
+      "academicalNumber" => $user["academicalNumber"],
+      "role" => $user["role"]
     ]);
   }
 
@@ -90,8 +91,8 @@ class UserService
     return empty($this->userRepository->getUserByEmail($email)["data"]->fetch(PDO::FETCH_ASSOC));
   }
 
-  private function isFnUnique($fn)
+  private function isAcademicalNumberUnique($fn)
   {
-    return empty($this->userRepository->getUserByFacultyNumber($fn)["data"]->fetch(PDO::FETCH_ASSOC));
+    return empty($this->userRepository->getUserByAcademicalNumber($fn)["data"]->fetch(PDO::FETCH_ASSOC));
   }
 }

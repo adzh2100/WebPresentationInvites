@@ -232,8 +232,8 @@ const wrapText = function (ctx, text, x, y, maxWidth, lineHeight) {
 };
 
 function setDefaultValues() {
-  if (user.faculty_number) {
-    document.getElementById('faculty-number').value = user.faculty_number;
+  if (user.academical_number && user.role === 'student') {
+    document.getElementById('faculty-number').value = user.academical_number;
   }
 }
 

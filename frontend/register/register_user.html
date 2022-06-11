@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="./register.css" />
+</head>
+
+<body>
+  <form id="registerForm">
+    <h3>Регистрация</h3>
+    <div>
+      <input id="firstName" name="firstName" type="text" placeholder="Име" required />
+    </div>
+    <div>
+      <input id="lastName" name="lastName" type="text" placeholder="Фамилия" required />
+    </div>
+    <div>
+      <input id="username" name="username" type="text" placeholder="Потребителско име" required />
+    </div>
+    <div>
+      <input id="fn" name="faculty_number" type="number" placeholder="Факултетен номер" required />
+    </div>
+    <div>
+      <input id="email" name="email" type="email" placeholder="Имейл" required />
+    </div>
+    <div>
+      <input id="spassword" name="spassword" type="password" placeholder="Парола" required />
+    </div>
+    <div>
+      <input id="repassword" name="repassword" type="password" placeholder="Повтори паролата" required />
+    </div>
+    <div>
+      <input id="specification" name="specification" type="text" placeholder="Специалност" required />
+    </div>
+    <div>
+      <input id="year" name="year" type="number" placeholder="Курс" required />
+    </div>
+
+    <button type="submit" class="button">
+      <span class="text">Регистирай ме</span>
+      <i class="ri-check-linea icon"></i>
+    </button>
+    <p>Вече имаш профил? <a href="../login/login.html">Влез от тук</a></p>
+  </form>
+  <div id="error"></div>
+  <script src="register-user.js"></script>
+</body>
+
+</html>
