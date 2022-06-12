@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Welcome</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./index.css" />
-  <title>Welcome</title>
-</head>
-
-<body>
-  <button id="guest-btn" class="button" onclick="window.location.href='../create_invitation/create_invitation.html'">
-    <img src="../assets/student_icon.svg" id="teacher" />
-    <span class="student">Гост</span>
-  </button>
-  <button class="button" onclick="window.location.href='../register/register_user.html'">
-    <img src="../assets/student_icon.svg" id="student" />
-    <span class="student">Студент</span>
-  </button>
-  <button class="button" onclick="window.location.href='../register/register_teacher.html'">
-    <img src="../assets/teacher_icon.svg" id="teacher" />
-    <span class="student">Преподавател</span>
-  </button>
-  <script src="./index.js"></script>
-</body>
-
+  <body>
+    <button
+      id="guest-btn"
+      class="button"
+      onclick="window.location.href='../create_invitation/create_invitation.html'"
+    >
+      <img src="../assets/guest.svg" id="guest" />
+      <span class="student">Гост</span>
+    </button>
+    <button
+      class="button"
+      onclick="window.location.href='../register/register_user.html'"
+    >
+      <img src="../assets/student_icon.svg" id="student" />
+      <span class="student">Студент</span>
+    </button>
+    <button
+      class="button"
+      onclick="window.location.href='../register/register_teacher.html'"
+    >
+      <img src="../assets/teacher_icon.svg" id="teacher" />
+      <span class="student">Преподавател</span>
+    </button>
+    <script src="./index.js"></script>
+  </body>
 </html>

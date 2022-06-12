@@ -7,7 +7,7 @@ body{
 }
 
 
-#student, #teacher{
+#student, #teacher, #guest{
     display: flex;
     justify-content: center;
     padding: 10px;
