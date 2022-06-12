@@ -26,12 +26,48 @@ class InvitationsRepository
     }
   }
 
+  public function getInvitationsWithTerm($term)
+  {
+    $this->database->getConnection()->beginTransaction();
+
+    try {
+      $sql = "SELECT presentation_theme, date, time, description, first_name, last_name, academical_number
+              FROM invitations JOIN users on invitations.user_id = users.id
+              WHERE presentation_theme LIKE '%{$term}%'";
+      $getInvitations = $this->database->getConnection()->prepare($sql);
+      $getInvitations->execute();
+      $this->database->getConnection()->commit();
+      return ["success" => true, "data" => $getInvitations];
+    } catch (PDOException $e) {
+      $this->database->getConnection()->rollBack();
+      return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
+    }
+  }
+
   public function getInvitationsDetailed()
   {
     $this->database->getConnection()->beginTransaction();
 
     try {
       $sql = "SELECT presentation_theme, date, time, description, first_name, last_name, academical_number, auto_generated FROM invitations JOIN users on invitations.user_id = users.id";
+      $getInvitations = $this->database->getConnection()->prepare($sql);
+      $getInvitations->execute();
+      $this->database->getConnection()->commit();
+      return ["success" => true, "data" => $getInvitations];
+    } catch (PDOException $e) {
+      $this->database->getConnection()->rollBack();
+      return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
+    }
+  }
+
+  public function getInvitationsWithTermDetailed($term)
+  {
+    $this->database->getConnection()->beginTransaction();
+
+    try {
+      $sql = "SELECT presentation_theme, date, time, description, first_name, last_name, academical_number, auto_generated
+      FROM invitations JOIN users on invitations.user_id = users.id
+      WHERE presentation_theme LIKE '%{$term}%'";
       $getInvitations = $this->database->getConnection()->prepare($sql);
       $getInvitations->execute();
       $this->database->getConnection()->commit();

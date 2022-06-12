@@ -16,26 +16,48 @@ class InvitationService
   }
 
 
-  public function getAllInvitations($role)
+  public function getAllInvitations($role, $term)
   {
-    try {
-      $result = null;
+    if ($term == "") {
+      try {
+        $result = null;
 
-      if ($role == "student") {
-        $result = $this->invitationsRepository->getInvitations();
-      } else {
-        $result = $this->invitationsRepository->getInvitationsDetailed();
+        if ($role == "student") {
+          $result = $this->invitationsRepository->getInvitations();
+        } else {
+          $result = $this->invitationsRepository->getInvitationsDetailed();
+        }
+
+        $invitations = [];
+
+        while ($data = $result["data"]->fetch(PDO::FETCH_ASSOC)) {
+          array_push($invitations, $data);
+        }
+
+        return ["success" => true, "data" => json_encode($invitations)];
+      } catch (PDOException $e) {
+        return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
       }
+    } else {
+      try {
+        $result = null;
 
-      $invitations = [];
+        if ($role == "student") {
+          $result = $this->invitationsRepository->getInvitationsWithTerm($term);
+        } else {
+          $result = $this->invitationsRepository->getInvitationsWithTermDetailed($term);
+        }
 
-      while ($data = $result["data"]->fetch(PDO::FETCH_ASSOC)) {
-        array_push($invitations, $data);
+        $invitations = [];
+
+        while ($data = $result["data"]->fetch(PDO::FETCH_ASSOC)) {
+          array_push($invitations, $data);
+        }
+
+        return ["success" => true, "data" => json_encode($invitations)];
+      } catch (PDOException $e) {
+        return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
       }
-
-      return ["success" => true, "data" => json_encode($invitations)];
-    } catch (PDOException $e) {
-      return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
     }
   }
 

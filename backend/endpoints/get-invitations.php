@@ -14,12 +14,12 @@ if (strlen($data) > 0) {
 }
 
 $role = $invitation_data["role"];
+$term = array_key_exists("term", $invitation_data) ? $invitation_data["term"] : "";
 
 session_start();
 
-
 try {
-  $response = $invitationsService->getAllInvitations($role);
+  $response = $invitationsService->getAllInvitations($role, $term);
 
   if ($response["success"]) {
     exit(json_encode(["success" => true, "data" => $response["data"]]));
