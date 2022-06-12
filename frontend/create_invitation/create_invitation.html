@@ -16,7 +16,7 @@
     </span>
     <img src="../assets/logout_icon.svg" id="logout-btn">
   </header>
-  <form class="information-collection">
+  <form class="information-collection" id="create-invitation">
     <h1>Създай покана</h4>
       <div class="information">
         <label>Tема на презентация:</label>
@@ -56,8 +56,12 @@
       </div>
       <button type="submit">Добави покана</button>
       <button id="send-email-btn">Изпрати поканата по пощата</button>
+      <p id="error"></p>
   </form>
   <script src="./create_invitation.js"></script>
+  <script src="./send_mail.js"></script>
+  <script src="./upload_invitation.js"></script>
+  <script src="../auth-handler/auth-handler.js"></script>
 </body>
 
 </html>

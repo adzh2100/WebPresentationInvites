@@ -17,7 +17,7 @@ class MailService
     $emails = $this->userRepository->getUserEmails($user_id);
     $recipients = '';
     while ($email = $emails["data"]->fetch(PDO::FETCH_ASSOC)) {
-      $recipients .= ', ' . $email["email"];
+      $recipients .= $email["email"] . ', ';
     }
 
     $subject = "Покана за презентация по уеб";

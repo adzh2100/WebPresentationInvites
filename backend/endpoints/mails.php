@@ -2,8 +2,6 @@
 
 require_once(realpath(dirname(__FILE__) . '/../services/mail_service.php'));
 
-
-
 $mailService = new MailService();
 
 session_start();

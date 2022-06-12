@@ -24,5 +24,6 @@ CREATE TABLE invitations (
   presentation_theme    VARCHAR(255) NOT NULL,
   date                  DATE NOT NULL,
   time                  VARCHAR(10) NOT NULL,
-  description           VARCHAR(255) NOT NULL
+  description           VARCHAR(255) NOT NULL,
+  auto_generated        BOOLEAN DEFAULT FALSE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

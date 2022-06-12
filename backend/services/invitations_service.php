@@ -1,21 +1,32 @@
 <?php
 require_once(realpath(dirname(__FILE__) . '/../db/repositories/invitations_repository.php'));
+require_once(realpath(dirname(__FILE__) . '/../db/repositories/user_repository.php'));
+
 
 class InvitationService
 {
 
   private $invitationsRepository;
+  private $userRepository;
 
   function __construct()
   {
     $this->invitationsRepository = new InvitationsRepository();
+    $this->userRepository = new UserRepository();
   }
 
 
-  public function getAllInvitations()
+  public function getAllInvitations($role)
   {
     try {
-      $result = $this->invitationsRepository->getInvitations();
+      $result = null;
+
+      if ($role == "student") {
+        $result = $this->invitationsRepository->getInvitations();
+      } else {
+        $result = $this->invitationsRepository->getInvitationsDetailed();
+      }
+
       $invitations = [];
 
       while ($data = $result["data"]->fetch(PDO::FETCH_ASSOC)) {
@@ -34,35 +45,38 @@ class InvitationService
       return ["success" => false, "error" => "Този слот от дата и час вече е зает! Опитай с друг!"];
     } elseif ($this->isFacultyNumberValid($invitation["faculty_number"]) == false) {
       return ["success" => false, "error" => "Този факултетен номер не е валиден!"];
-    } elseif ($this->isFacultyNumberUnique($invitation["faculty_number"]) == false) {
-      return ["success" => false, "error" => "Този факултетен номер се използва от друг човек с покана в системата!"];
     }
+
+    $response = $this->userRepository->getUserByAcademicalNumber($invitation["faculty_number"]);
+    $belongs_to = $response["data"]->fetch(PDO::FETCH_ASSOC);
+
+
     return $this->invitationsRepository->createInvitations([
       "presentation_theme" => $invitation["presentation_theme"],
+      "user_id" => $belongs_to["id"],
       "date" => $invitation["date"],
       "time" => $invitation["time"],
       "description" => $invitation["description"],
-      "first_name" => $invitation["first_name"],
-      "last_name" => $invitation["last_name"],
-      "faculty_number" => $invitation["faculty_number"],
+      "auto_generated" => $invitation["auto_generated"]
     ]);
   }
 
   private function isDateAndTimeUnique($date, $time)
   {
-    return empty($this->invitationsRepository->getInvitations($date)["data"]->fetch(PDO::FETCH_ASSOC)) and empty($this->invitationsRepository->getInvitations($time)["data"]->fetch(PDO::FETCH_ASSOC));
+    $data = [
+      "date" => $date,
+      "time" => $time
+    ];
+
+    return empty($this->invitationsRepository->getInvitationsByDateAndTime($data)["data"]->fetch(PDO::FETCH_ASSOC));
   }
 
   private function isFacultyNumberValid($faculty_number)
   {
-    $fn_regex = '^[\d]{5,10}$';
+    $fn_regex = '/^[0-9]{5,10}$/';
     if (!preg_match($fn_regex, $faculty_number)) {
       return false;
     }
-  }
-
-  private function isFacultyNumberUnique($faculty_number)
-  {
-    return empty($this->invitationsRepository->getInvitations($faculty_number)["data"]->fetch(PDO::FETCH_ASSOC));
+    return true;
   }
 }
