@@ -24,43 +24,19 @@ h3 {
 }
 
 .button {
-  position: relative;
-  width: 70px;
-  height: 30px;
-  font-size: 10px;
-  background-color: aquamarine;
+  height: 50px;
+  border-radius: 50px;
   border: none;
-  color: #fff;
-  border-radius: 6px;
+  padding: 15px;
+  background: lightseagreen;
+  color: white;
+  font-weight: bold;
+  margin-right: 10px;
   cursor: pointer;
-  transition: width 0.5s, border-radius 0.5s;
 }
 
-.button * {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.25s;
-}
-
-.icon {
-  opacity: 0;
-}
-
-.button:focus {
-  width: 30px;
-  background-color: #00fd8f;
-  border-radius: 50%;
-}
-
-.button:focus .text {
-  opacity: 0;
-}
-
-.button:focus .icon {
-  opacity: 1;
-  transition-delay: 0.5s;
+.button:hover {
+  box-shadow: 3px 3px lightgray;
 }
 
 select {
