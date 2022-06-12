@@ -108,7 +108,7 @@ header img {
 }
 
 #auto-generate-btn:hover,
-#self-generate-btn:hover {
+#self-generate-btn:hover, button:hover {
   box-shadow: 3px 3px lightgray;
 }
 
@@ -150,7 +150,9 @@ button{
   font-weight: bold;
   margin-right: 10px;
   cursor: pointer;
+  margin-top: 10px;
 }
+
 
 #send-email-btn, #copyClipboard{
   background-color: steelblue;

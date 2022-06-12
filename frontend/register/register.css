@@ -24,7 +24,6 @@ h3 {
 }
 
 .button {
-  height: 50px;
   border-radius: 50px;
   border: none;
   padding: 15px;
@@ -33,6 +32,7 @@ h3 {
   font-weight: bold;
   margin-right: 10px;
   cursor: pointer;
+  width: 100%;
 }
 
 .button:hover {
