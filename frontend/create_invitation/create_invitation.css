@@ -140,7 +140,19 @@ form button {
   cursor: pointer;
 }
 
-#send-email-btn {
+button{
+  height: 50px;
+  border-radius: 50px;
+  border: none;
+  padding: 15px;
+  background: lightseagreen;
+  color: white;
+  font-weight: bold;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+#send-email-btn, #copyClipboard{
   background-color: steelblue;
 }
 
