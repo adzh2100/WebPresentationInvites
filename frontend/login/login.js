@@ -19,8 +19,8 @@ document.getElementById('login').addEventListener('submit', event => {
       localStorage.setItem('user', response.data);
       location.replace('../create_invitation/create_invitation.html');
     } else {
-      // We should create such element and handle it properly
-      document.getElementById('user-message').innerText = response.message;
+      document.getElementById('error').classList.add('error');
+      document.getElementById('error').innerText = response['error'];
     }
   });
 });

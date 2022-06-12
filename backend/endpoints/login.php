@@ -13,21 +13,26 @@ $username = $user_data["username"];
 $password = $user_data["password"];
 
 try {
-  $userId = $userService->checkUser($username, $password);
-  $_SESSION['user_id'] = $userId;
+  $response = $userService->checkUser($username, $password);
 
-  $info = $userService->getCurrentUser()["data"]->fetch(PDO::FETCH_ASSOC);
+  if ($response["success"] == true) {
+    $_SESSION['user_id'] = $response["data"];
 
-  $_SESSION['username'] = $info["username"];
-  $_SESSION["first_name"] = $info["first_name"];
-  $_SESSION["last_name"] = $info["last_name"];
-  $_SESSION["email"] = $info["email"];
-  $_SESSION["academical_number"] = $info["academical_number"];
-  $_SESSION["specification"] = $info["specification"];
-  $_SESSION["year"] = $info["year"];
-  $_SESSION["role"] = $info["role"];
+    $info = $userService->getCurrentUser()["data"]->fetch(PDO::FETCH_ASSOC);
 
-  exit(json_encode(["success" => true, "message" => "Успешен вход!", "data" => json_encode($info)]));
+    $_SESSION['username'] = $info["username"];
+    $_SESSION["first_name"] = $info["first_name"];
+    $_SESSION["last_name"] = $info["last_name"];
+    $_SESSION["email"] = $info["email"];
+    $_SESSION["academical_number"] = $info["academical_number"];
+    $_SESSION["specification"] = $info["specification"];
+    $_SESSION["year"] = $info["year"];
+    $_SESSION["role"] = $info["role"];
+
+    exit(json_encode(["success" => true, "message" => "Успешен вход!", "data" => json_encode($info)]));
+  } else {
+    exit(json_encode(["success" => false, "error" =>  $response["error"]]));
+  }
 } catch (PDOException $e) {
   exit(json_encode(["success" => false, "error" => "Connection failed: " . $e->getMessage()]));
 }
