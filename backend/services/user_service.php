@@ -63,16 +63,12 @@ class UserService
     $user = $this->userRepository->getUserByUsername($username);
 
     $resultData = $user["data"]->fetch(PDO::FETCH_ASSOC);
-    if (!$user["success"] || empty($resultData)) {
-      throw new Exception("Грешно потребителско име или парола.");
-    }
-
-    if (strcmp(md5($password), $resultData["password"]) != 0) {
-      throw new Exception("Грешно потребителско име или паролa.");
+    if (!$user["success"] || empty($resultData) || strcmp(md5($password), $resultData["password"]) != 0) {
+      return ["success" => false, "error" => "Грешно потребителско име или парола."];
     }
 
     session_start();
-    return $resultData["id"];
+    return ["success" => true, "data" => $resultData["id"]];
   }
 
   public function getCurrentUser()
