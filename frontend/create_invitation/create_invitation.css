@@ -6,6 +6,10 @@ body {
   width: 100%;
 }
 
+h1 {
+  font-size: 2em;
+}
+
 main {
   display: flex;
   align-items: flex-start;
@@ -95,10 +99,12 @@ header img {
 #auto-generate-btn {
   width: 170px;
   border-radius: 50px;
-  background: lightpink;
+  background: darkred;
   padding: 8px;
-  border: 1px solid lightpink;
+  border: none;
   cursor: pointer;
+  color: white;
+  font-weight: bold;
 }
 
 #auto-generate-btn:hover,
@@ -109,13 +115,35 @@ header img {
 #self-generate-btn {
   width: 170px;
   border-radius: 50px;
-  background: lightgreen;
+  background: forestgreen;
   padding: 8px;
-  border: 1px solid lightgreen;
+  border: none;
   cursor: pointer;
+  color: white;
+  font-weight: bold;
 }
 
 #meme-generator,
 #auto-generated {
   margin-top: 15px;
+}
+
+form button {
+  height: 50px;
+  border-radius: 50px;
+  border: none;
+  padding: 15px;
+  background: lightseagreen;
+  color: white;
+  font-weight: bold;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+#send-email-btn {
+  background-color: steelblue;
+}
+
+form button:hover {
+  box-shadow: 3px 3px lightgray;
 }
