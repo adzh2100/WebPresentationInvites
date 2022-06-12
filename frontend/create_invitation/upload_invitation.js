@@ -1,3 +1,8 @@
+if (user.role === 'guest') {
+  document.getElementById('create-invitation').classList.add('hidden');
+  document.getElementById('all-invitations').classList.add('hidden');
+}
+
 setDefaultValues();
 
 function setDefaultValues() {

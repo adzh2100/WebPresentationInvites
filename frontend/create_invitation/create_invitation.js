@@ -1,6 +1,7 @@
 const userData = localStorage.getItem('user');
 const user = JSON.parse(userData);
 
+const guest = user.role === 'guest';
 const imageFileInput = document.getElementById('imageFileInput');
 const topText = document.getElementById('topText');
 const bottomText = document.getElementById('bottomText');

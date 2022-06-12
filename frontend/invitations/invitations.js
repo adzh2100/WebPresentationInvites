@@ -2,6 +2,10 @@ const userData = localStorage.getItem('user');
 const user = JSON.parse(userData);
 const main = document.getElementById('main-element');
 
+if (user.role === 'guest') {
+  location.replace('../login/login.html');
+}
+
 getInvitations().then(response => {
   if (response.success) {
     const invitations = JSON.parse(response.data);
