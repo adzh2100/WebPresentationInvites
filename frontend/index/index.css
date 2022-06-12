@@ -28,3 +28,15 @@ body{
 button:hover{
     background-color:rgba(0, 242, 255, 0.253);
 }
+
+footer{ 
+    color: rgba(0,0,0,.7); 
+    text-shadow: 0 1px rgba(255, 255, 255, 0.1);
+    background: rgba(108,200, 234, 0.19); 
+    text-align: center;
+    padding:5%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
