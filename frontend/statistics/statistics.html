@@ -4,29 +4,37 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="invitations.css" />
+    <link rel="stylesheet" href="statistics.css" />
     <title>Презентации по уеб - покани</title>
   </head>
-
   <body>
     <header>
       <span>
         <a href="../create_invitation/create_invitation.html">Добави покана</a>
-        <a href="../statistics/statistics.html" id="stats">Статистики</a>
+        <a href="../invitations/invitations.html">Всички покани</a>
       </span>
 
       <img src="../assets/logout_icon.svg" id="logout-btn" />
     </header>
     <main id="main-element">
-      <h1>Покани</h1>
+      <h1>Статистики</h1>
+      <div id="counts"></div>
       <input
         type="text"
-        placeholder="Търси покана по тема на презентацията..."
+        placeholder="Търси покана по факултетен номер..."
         id="search-bar"
       />
-      <div class="invitation-element header"></div>
+      <div class="user-element header">
+        <span>Потребителско име</span>
+        <span>Имейл</span>
+        <span>Име</span>
+        <span>Фамилия</span>
+        <span>Факултетен номер</span>
+        <span>Специалност</span>
+        <span>Курс</span>
+      </div>
     </main>
+    <script src="./statistics.js"></script>
     <script src="../auth-handler/auth-handler.js"></script>
-    <script src="./invitations.js"></script>
   </body>
 </html>

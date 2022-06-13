@@ -77,10 +77,10 @@ class UserService
     return $this->userRepository->getUserById($id);
   }
 
-  public function getUsersWithoutInvitation()
+  public function getUsersWithoutInvitation($term)
   {
     try {
-      $result = $this->userRepository->getUsersWithoutInvitation();
+      $result = $this->userRepository->getUsersWithoutInvitation($term);
       $countResult = $this->userRepository->getTotalUsersCount();
 
       $users = [];
@@ -89,7 +89,7 @@ class UserService
         array_push($users, $data);
       }
 
-      $count = $result["data"]->fetch(PDO::FETCH_ASSOC);
+      $count = $countResult["data"]->fetch(PDO::FETCH_ASSOC);
 
       return ["success" => true, "data" => json_encode($users), "count" => $count];
     } catch (PDOException $e) {

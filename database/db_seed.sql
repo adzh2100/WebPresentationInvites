@@ -27,3 +27,12 @@ INSERT INTO `invitations` (`user_id`, `presentation_theme`, `date`, `time`, `des
 
 INSERT INTO `users` (`username`, `password`, `first_name`, `last_name`, `email`, `academical_number`, `role`)
       VALUES('milen_petrov', '5f4dcc3b5aa765d61d8327deb882cf99', 'Милен', 'Петров', 'milen.petrov@gmail.com', 62470512, 'teacher');
+
+INSERT INTO `users` (`username`, `password`, `first_name`, `last_name`, `email`, `specification`, `year`, `academical_number`, `role`)
+      VALUES('murzelqvec123', '5f4dcc3b5aa765d61d8327deb882cf99', 'Мързелан', 'Иванов', 'murzelan.ivanov@gmail.com','СИ', 3, 62422, 'student');
+
+INSERT INTO `users` (`username`, `password`, `first_name`, `last_name`, `email`, `specification`, `year`, `academical_number`, `role`)
+      VALUES('marincho123', '5f4dcc3b5aa765d61d8327deb882cf99', 'Мартин', 'Христов', 'martincho@gmail.com','СИ', 3, 62423, 'student');
+
+INSERT INTO `users` (`username`, `password`, `first_name`, `last_name`, `email`, `specification`, `year`, `academical_number`, `role`)
+      VALUES('kukata', '5f4dcc3b5aa765d61d8327deb882cf99', 'Росен', 'Гацов', 'kukatawee2000@gmail.com','СИ', 3, 62444, 'student');

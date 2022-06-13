@@ -88,3 +88,11 @@ input {
 input:focus {
   outline: none;
 }
+
+a{
+  margin-right: 30px;
+}
+
+.hidden {
+  display: none;
+}

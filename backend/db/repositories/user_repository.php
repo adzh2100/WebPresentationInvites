@@ -126,12 +126,12 @@ class UserRepository
     }
   }
 
-  public function getUsersWithoutInvitation()
+  public function getUsersWithoutInvitation($term)
   {
     $this->database->getConnection()->beginTransaction();
 
     try {
-      $sql = "SELECT * FROM `users` WHERE id not in (SELECT user_id from `invitations`) and role <> 'teacher'";
+      $sql = "SELECT username, email, first_name, last_name, academical_number, specification, year FROM `users` WHERE id not in (SELECT user_id from `invitations`) and role <> 'teacher' and academical_number like '%{$term}%'";
       $userData = $this->database->getConnection()->prepare($sql);
       $userData->execute();
       $this->database->getConnection()->commit();
