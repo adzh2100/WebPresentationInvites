@@ -125,4 +125,36 @@ class UserRepository
       return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
     }
   }
+
+  public function getUsersWithoutInvitation()
+  {
+    $this->database->getConnection()->beginTransaction();
+
+    try {
+      $sql = "SELECT * FROM `users` WHERE id not in (SELECT user_id from `invitations`) and role <> 'teacher'";
+      $userData = $this->database->getConnection()->prepare($sql);
+      $userData->execute();
+      $this->database->getConnection()->commit();
+      return ["success" => true, "data" => $userData];
+    } catch (PDOException $e) {
+      $this->database->getConnection()->rollBack();
+      return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
+    }
+  }
+
+  public function getTotalUsersCount()
+  {
+    $this->database->getConnection()->beginTransaction();
+
+    try {
+      $sql = "SELECT count(id) FROM `users` where role <> 'teacher'";
+      $userData = $this->database->getConnection()->prepare($sql);
+      $userData->execute();
+      $this->database->getConnection()->commit();
+      return ["success" => true, "data" => $userData];
+    } catch (PDOException $e) {
+      $this->database->getConnection()->rollBack();
+      return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
+    }
+  }
 }

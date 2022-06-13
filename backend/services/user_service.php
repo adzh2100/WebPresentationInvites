@@ -77,6 +77,26 @@ class UserService
     return $this->userRepository->getUserById($id);
   }
 
+  public function getUsersWithoutInvitation()
+  {
+    try {
+      $result = $this->userRepository->getUsersWithoutInvitation();
+      $countResult = $this->userRepository->getTotalUsersCount();
+
+      $users = [];
+
+      while ($data = $result["data"]->fetch(PDO::FETCH_ASSOC)) {
+        array_push($users, $data);
+      }
+
+      $count = $result["data"]->fetch(PDO::FETCH_ASSOC);
+
+      return ["success" => true, "data" => json_encode($users), "count" => $count];
+    } catch (PDOException $e) {
+      return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
+    }
+  }
+
   private function isUsernameUnique($username)
   {
     return empty($this->userRepository->getUserByUsername($username)["data"]->fetch(PDO::FETCH_ASSOC));
