@@ -1,7 +1,8 @@
 use webInvites;
 
+
 INSERT INTO `users` (`username`, `password`, `first_name`, `last_name`, `email`, `specification`, `year`, `academical_number`, `role`)
-      VALUES('sheki', '5f4dcc3b5aa765d61d8327deb882cf99', 'Айше', 'Джинджи', 'adzh2100@abv.bg', 'СИ', 3, 62470, 'student');
+      VALUES('sheki', '5f4dcc3b5aa765d61d8327deb882cf99', 'Айше', 'Джинджи', 'adzh2100@gmail.com', 'СИ', 3, 62470, 'student');
 
 INSERT INTO `users` (`username`, `password`, `first_name`, `last_name`, `email`, `specification`, `year`, `academical_number`, `role`)
       VALUES('angel_marinski', '5f4dcc3b5aa765d61d8327deb882cf99', 'Aнгел', 'Марински', 'angel@abv.bg', 'СИ', 3, 62469, 'student');
@@ -23,3 +24,6 @@ INSERT INTO `invitations` (`user_id`, `presentation_theme`, `date`, `time`, `des
 
 INSERT INTO `invitations` (`user_id`, `presentation_theme`, `date`, `time`, `description`, `auto_generated`)
       VALUES(4, 'Javascript Lint', '2022-06-21', '10:30', 'Toва не го знаете, обещавам!', 1);
+
+INSERT INTO `users` (`username`, `password`, `first_name`, `last_name`, `email`, `academical_number`, `role`)
+      VALUES('milen_petrov', '5f4dcc3b5aa765d61d8327deb882cf99', 'Милен', 'Петров', 'milen.petrov@gmail.com', 62470512, 'teacher');
