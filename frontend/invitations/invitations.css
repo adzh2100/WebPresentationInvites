@@ -122,3 +122,16 @@ a {
   display: flex;
   justify-content: center;
 }
+button {
+  width: 200px;
+  border-radius: 50px;
+  border: none;
+  padding: 15px;
+  background: lightseagreen;
+  color: white;
+  font-weight: bold;
+  margin-right: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}

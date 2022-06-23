@@ -1,3 +1,6 @@
+const userData = localStorage.getItem('user');
+const user = JSON.parse(userData);
+
 if (user.role === 'guest') {
   document.getElementById('create-invitation').classList.add('hidden');
   document.getElementById('all-invitations').classList.add('hidden');
