@@ -8,7 +8,32 @@ if (user.role === "guest") {
 
 if (user.role !== "teacher") {
   document.getElementById("stats").classList.add("hidden");
+  document.getElementById("download").classList.add("hidden");
 }
+
+document
+  .getElementById("download-form")
+  .addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const data = {
+      role: user.role,
+    };
+
+    fetch("../../backend/endpoints/download_invitations.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify(data),
+    }).then((t) => {
+      return t.blob().then((b) => {
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(b);
+        a.setAttribute("download", "invitations.csv");
+        a.click();
+      });
+    });
+  });
 
 getInvitations().then((response) => {
   if (response.success) {
