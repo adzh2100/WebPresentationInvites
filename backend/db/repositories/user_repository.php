@@ -67,7 +67,7 @@ class UserRepository
     $this->database->getConnection()->beginTransaction();
 
     try {
-      $sql = "SELECT username, first_name, last_name, academical_number, email, specification, year, role FROM users WHERE id=:id";
+      $sql = "SELECT id, username, first_name, last_name, academical_number, email, specification, year, role FROM users WHERE id=:id";
       $currentUserData = $this->database->getConnection()->prepare($sql);
       $currentUserData->execute(["id" => $id]);
       $this->database->getConnection()->commit();

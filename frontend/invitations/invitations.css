@@ -37,13 +37,16 @@ main {
 }
 
 .invitation-element {
-  display: grid;
   width: 80%;
   padding: 20px;
   margin: 20px;
   border-radius: 50px;
   background: whitesmoke;
   box-sizing: border-box;
+}
+
+.invitation-element:not(.header) {
+  cursor: pointer;
 }
 
 .invitation-element span {
@@ -53,11 +56,13 @@ main {
 }
 
 .student {
-  grid-template-columns: repeat(7, 1fr);
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
 }
 
 .teacher {
-  grid-template-columns: repeat(8, 1fr);
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
 }
 
 .header {
@@ -89,10 +94,31 @@ input:focus {
   outline: none;
 }
 
-a{
+a {
   margin-right: 30px;
 }
 
 .hidden {
   display: none;
+}
+
+.no-img {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start !important;
+  color: rgba(0, 0, 0, 0.5);
+  padding-top: 15px;
+  padding-left: 15px;
+  font-style: italic;
+}
+
+.img {
+  width: 400px;
+  padding: 20px;
+  margin: auto;
+}
+
+.img-box:not(.hidden) {
+  display: flex;
+  justify-content: center;
 }

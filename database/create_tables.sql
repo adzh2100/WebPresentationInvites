@@ -25,5 +25,7 @@ CREATE TABLE invitations (
   date                  DATE NOT NULL,
   time                  VARCHAR(10) NOT NULL,
   description           VARCHAR(255) NOT NULL,
-  auto_generated        BOOLEAN DEFAULT FALSE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  auto_generated        BOOLEAN DEFAULT FALSE,
+  image                 longtext,
+  created_at            DATETIME DEFAULT NOW()
+) ENGINE=InnoDB;

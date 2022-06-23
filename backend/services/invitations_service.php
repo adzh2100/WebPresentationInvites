@@ -79,7 +79,8 @@ class InvitationService
       "date" => $invitation["date"],
       "time" => $invitation["time"],
       "description" => $invitation["description"],
-      "auto_generated" => $invitation["auto_generated"]
+      "auto_generated" => $invitation["auto_generated"],
+      "image" => $invitation["image"]
     ]);
   }
 
@@ -100,5 +101,16 @@ class InvitationService
       return false;
     }
     return true;
+  }
+
+  public function getInvitationByUserId($user_id)
+  {
+    try {
+      $result = $this->invitationsRepository->getInvitationByUserId($user_id);
+      $invitation = $result["data"]->fetch(PDO::FETCH_ASSOC);
+      return ["success" => true, "data" => json_encode($invitation)];
+    } catch (PDOException $e) {
+      return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
+    }
   }
 }
