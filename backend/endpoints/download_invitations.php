@@ -13,10 +13,8 @@ if (strlen($data) > 0) {
     exit(json_encode(["success" => false, "message" => "Дължината е нула!"]));
 }
 
-$role = $invitation_data["role"];
-
 try {
-    $response = $invitationsService->getAllInvitations($role, '');
+    $response = $invitationsService->getAllInvitationsForCsv();
     if ($response["success"]) {
         $f = fopen('php://memory', 'w');
         $output_file_name = "export.csv";
@@ -28,7 +26,8 @@ try {
             "Описание",
             "Представящ",
             "Факултетен номер",
-            "Автоматично генерирано"
+            "Автоматично генерирано",
+            "Качена"
         ];
 
         fputcsv($f, (array)$header, ':');

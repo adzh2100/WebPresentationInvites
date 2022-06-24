@@ -61,6 +61,21 @@ class InvitationService
     }
   }
 
+  public function getAllInvitationsForCsv()
+  {
+    try {
+      $result = null;
+      $result = $this->invitationsRepository->getInvitationsForCSV();
+      $invitations = [];
+      while ($data = $result["data"]->fetch(PDO::FETCH_ASSOC)) {
+        array_push($invitations, $data);
+      }
+      return ["success" => true, "data" => json_encode($invitations)];
+    } catch (PDOException $e) {
+      return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
+    }
+  }
+
   public function createInvitation($invitation)
   {
     if ($this->isDateAndTimeUnique($invitation["date"], $invitation["time"]) == false) {

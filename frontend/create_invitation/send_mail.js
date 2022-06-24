@@ -1,5 +1,3 @@
-import { text } from "./constants.js";
-
 document.getElementById("send-email-btn").addEventListener("click", (event) => {
   event.preventDefault();
   sendMail().then((response) => {
@@ -33,14 +31,6 @@ async function sendMail() {
   const result = await response.json();
 
   return result;
-}
-
-function generateText() {
-  const { theme, presentationDate, presentationTime, facultyNumber } =
-    getFormData();
-
-  // return `Здравейте! Каня ви на презентацията на ${user.first_name} ${user.last_name} с ФН: ${facultyNumber} на ${presentationDate} от ${presentationTime} на тема ${theme}`;
-  return text;
 }
 
 function getFormData() {
