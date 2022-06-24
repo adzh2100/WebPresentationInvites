@@ -78,7 +78,7 @@ class InvitationService
 
   public function createInvitation($invitation)
   {
-    if ($this->isDateAndTimeUnique($invitation["date"], $invitation["time"]) == false) {
+    if ($this->isDateAndTimeUnique($invitation["date"], $invitation["time"], $invitation["user_id"]) == false) {
       return ["success" => false, "error" => "Този слот от дата и час вече е зает! Опитай с друг!"];
     } elseif ($this->isFacultyNumberValid($invitation["faculty_number"]) == false) {
       return ["success" => false, "error" => "Този факултетен номер не е валиден!"];
@@ -99,13 +99,13 @@ class InvitationService
     ]);
   }
 
-  private function isDateAndTimeUnique($date, $time)
+  private function isDateAndTimeUnique($date, $time, $user_id)
   {
     $data = [
       "date" => $date,
-      "time" => $time
+      "time" => $time,
+      "user_id" => $user_id
     ];
-
     return empty($this->invitationsRepository->getInvitationsByDateAndTime($data)["data"]->fetch(PDO::FETCH_ASSOC));
   }
 

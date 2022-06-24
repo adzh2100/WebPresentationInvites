@@ -99,11 +99,12 @@ class InvitationsRepository
     $this->database->getConnection()->beginTransaction();
 
     try {
-      $sql = "SELECT * from invitations where date=:date and time=:time";
+      $sql = "SELECT * from invitations where date=:date and time=:time and user_id <> :user_id";
       $getInvitations = $this->database->getConnection()->prepare($sql);
       $getInvitations->execute([
         "date" => $data["date"],
-        "time" => $data["time"]
+        "time" => $data["time"],
+        "user_id" => $data["user_id"]
       ]);
       $this->database->getConnection()->commit();
       return ["success" => true, "data" => $getInvitations];
